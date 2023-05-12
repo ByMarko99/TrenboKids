@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "693279072074",
+    "project_id": "e1-t1-amg",
+    "storage_bucket": "e1-t1-amg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693279072074:android:53094fae991c9df2c4ebb3",
+        "android_client_info": {
+          "package_name": "com.example.login4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693279072074-5127tf3u8q4fjend0d04h1bc3q7scpl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMXqvC7TPsRFz4tbEHAx_IeJoSjaODV0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693279072074-5127tf3u8q4fjend0d04h1bc3q7scpl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693279072074:android:baeec629be951965c4ebb3",
+        "android_client_info": {
+          "package_name": "com.example.trenbokids"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693279072074-5127tf3u8q4fjend0d04h1bc3q7scpl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMXqvC7TPsRFz4tbEHAx_IeJoSjaODV0g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693279072074-5127tf3u8q4fjend0d04h1bc3q7scpl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

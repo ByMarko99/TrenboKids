@@ -1,0 +1,412 @@
+package com.example.trenbokids;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Menu;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+
+import com.example.trenbokids.databinding.ActivityNavegadorBinding;
+
+import java.util.List;
+
+public class Navegador extends AppCompatActivity {
+
+    private AppBarConfiguration mAppBarConfiguration;
+    private ActivityNavegadorBinding binding;
+    Button button;
+    Button button2;
+    Button button4;
+    TextView textTrembo;
+    ImageView imagenReset;
+    TextView textView24;
+    TextView textView25;
+    TextView textView26;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        binding = ActivityNavegadorBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        List<SquatScore> squatScoreList;
+        List<BenchScore> benchScoreList;
+        List<ScoreQuiz> scoreQuizList;
+        List<Macro> macroList;
+        imagenReset = findViewById(R.id.imagenReset);
+
+        AppDatabase appDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDatabase.class,
+                "dbPruebas"
+        ).allowMainThreadQueries().fallbackToDestructiveMigration().build();
+
+        textTrembo = findViewById(R.id.textTrembo);
+        textView24 = findViewById(R.id.textView24);
+        textView25 = findViewById(R.id.textView25);
+        textView26 = findViewById(R.id.textView26);
+        squatScoreList = appDatabase.daoSquatScore().obtenerSScores();
+        benchScoreList = appDatabase.daoBenchScore().obtenerBScores();
+        scoreQuizList = appDatabase.daoScoreQuiz().obtenerQScores();
+        macroList = appDatabase.daoMacros().obtenerMacros();
+
+        int scoreSquat = 0;
+        int scoreBench = 0;
+        int scoreQuiz = 0;
+        int calo = 0;
+        int prote = 0;
+        int car = 0;
+        if(squatScoreList.isEmpty()){
+
+        }else{
+            scoreSquat = squatScoreList.get(0).score;
+        }
+
+
+        if(benchScoreList.isEmpty()){
+
+        }else{
+            scoreBench = benchScoreList.get(0).score;
+        }
+
+        if(scoreQuizList.isEmpty()){
+
+        }else{
+            scoreQuiz = scoreQuizList.get(0).score;
+        }
+
+        int scoreult = scoreBench+scoreSquat+scoreQuiz;
+        textTrembo.setText("TREMBOPUNTOS : "+scoreult);
+
+        if(macroList.isEmpty()){
+
+        }else{
+            calo = macroList.get(0).calorias;
+            prote = macroList.get(0).proteinas;
+            car = macroList.get(0).carbos;
+        }
+
+        textView24.setText(String.valueOf(calo));
+        textView25.setText(String.valueOf(prote));
+        textView26.setText(String.valueOf(car));
+
+        setSupportActionBar(binding.appBarNavegador.toolbar);
+       // binding.appBarNavegador.fab.setOnClickListener(new View.OnClickListener() {
+       //     @Override
+       //     public void onClick(View view) {
+       //         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+       //                 .setAction("Action", null).show();
+        //    }
+        //});
+        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                .setOpenableLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navegador);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
+        imagenReset.setOnClickListener(v ->
+        {
+
+            int scoreSquat2 = 0;
+            int scoreBench2 = 0;
+            int scoreQuiz2 = 0;
+            if(appDatabase.daoSquatScore().obtenerSScores().isEmpty()){
+
+            }else{
+                scoreSquat2 = appDatabase.daoSquatScore().obtenerSScores().get(0).score;
+            }
+
+
+            if(appDatabase.daoBenchScore().obtenerBScores().isEmpty()){
+
+            }else{
+                scoreBench2 = appDatabase.daoBenchScore().obtenerBScores().get(0).score;
+            }
+
+            if(appDatabase.daoScoreQuiz().obtenerQScores().isEmpty()){
+
+            }else{
+                scoreQuiz2 = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
+            }
+
+            int scoreult2 = scoreBench2+scoreSquat2+scoreQuiz2;
+            textTrembo.setText("TREMBOPUNTOS : "+scoreult2);
+
+            int calo2 = 0;
+            int prote2 = 0;
+            int car2 = 0;
+
+            if(appDatabase.daoMacros().obtenerMacros().isEmpty()){
+
+            }else{
+                calo2 = appDatabase.daoMacros().obtenerMacros().get(0).calorias;
+                prote2 = appDatabase.daoMacros().obtenerMacros().get(0).proteinas;
+                car2 = appDatabase.daoMacros().obtenerMacros().get(0).carbos;
+            }
+
+            textView24.setText(String.valueOf(calo2));
+            textView25.setText(String.valueOf(prote2));
+            textView26.setText(String.valueOf(car2));
+
+        });
+        binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id=item.getItemId();
+                // In this section we are going
+                // to control what fragment has
+                // to be opened when you click on an icon
+                if (id==R.id.nav_home){
+                    Intent intent = new Intent(Navegador.this, Calculadora.class);
+                    startActivity(intent);
+                }else if (id==R.id.nav_gallery){
+                    Intent intent = new Intent(Navegador.this, Mapa.class);
+                    startActivity(intent);
+                }else if (id==R.id.nav_slideshow){
+                    Intent intent = new Intent(Navegador.this, SquatGame.class);
+                    startActivity(intent);
+
+                }
+
+                int scoreSquat = 0;
+                int scoreBench = 0;
+                int scoreQuiz = 0;
+                if(appDatabase.daoSquatScore().obtenerSScores().isEmpty()){
+
+                }else{
+                    scoreSquat = appDatabase.daoSquatScore().obtenerSScores().get(0).score;
+                }
+
+
+                if(appDatabase.daoBenchScore().obtenerBScores().isEmpty()){
+
+                }else{
+                    scoreBench = appDatabase.daoBenchScore().obtenerBScores().get(0).score;
+                }
+
+                if(appDatabase.daoScoreQuiz().obtenerQScores().isEmpty()){
+
+                }else{
+                    scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
+                }
+
+                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                textTrembo.setText("TREMBOPUNTOS : "+scoreult);
+
+                int calo = 0;
+                int prote = 0;
+                int car = 0;
+
+                if(appDatabase.daoMacros().obtenerMacros().isEmpty()){
+
+                }else{
+                    calo = appDatabase.daoMacros().obtenerMacros().get(0).calorias;
+                    prote = appDatabase.daoMacros().obtenerMacros().get(0).proteinas;
+                    car = appDatabase.daoMacros().obtenerMacros().get(0).carbos;
+                }
+
+                textView24.setText(String.valueOf(calo));
+                textView25.setText(String.valueOf(prote));
+                textView26.setText(String.valueOf(car));
+
+
+
+                return true;
+            }
+        });
+
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Navegador.this, SquatGame.class);
+                startActivity(intent);
+
+                int scoreSquat = 0;
+                int scoreBench = 0;
+                int scoreQuiz = 0;
+                if(appDatabase.daoSquatScore().obtenerSScores().isEmpty()){
+
+                }else{
+                    scoreSquat = appDatabase.daoSquatScore().obtenerSScores().get(0).score;
+                }
+
+
+                if(appDatabase.daoBenchScore().obtenerBScores().isEmpty()){
+
+                }else{
+                    scoreBench = appDatabase.daoBenchScore().obtenerBScores().get(0).score;
+                }
+
+                if(appDatabase.daoScoreQuiz().obtenerQScores().isEmpty()){
+
+                }else{
+                    scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
+                }
+
+                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                textTrembo.setText("TREMBOPUNTOS : "+scoreult);
+
+                int calo = 0;
+                int prote = 0;
+                int car = 0;
+
+                if(appDatabase.daoMacros().obtenerMacros().isEmpty()){
+
+                }else{
+                    calo = appDatabase.daoMacros().obtenerMacros().get(0).calorias;
+                    prote = appDatabase.daoMacros().obtenerMacros().get(0).proteinas;
+                    car = appDatabase.daoMacros().obtenerMacros().get(0).carbos;
+                }
+
+                textView24.setText(String.valueOf(calo));
+                textView25.setText(String.valueOf(prote));
+                textView26.setText(String.valueOf(car));
+            }
+        });
+
+        button2 = findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Navegador.this, Banca.class);
+                startActivity(intent);
+
+                int scoreSquat = 0;
+                int scoreBench = 0;
+                int scoreQuiz = 0;
+                if(appDatabase.daoSquatScore().obtenerSScores().isEmpty()){
+
+                }else{
+                    scoreSquat = appDatabase.daoSquatScore().obtenerSScores().get(0).score;
+                }
+
+
+                if(appDatabase.daoBenchScore().obtenerBScores().isEmpty()){
+
+                }else{
+                    scoreBench = appDatabase.daoBenchScore().obtenerBScores().get(0).score;
+                }
+
+                if(appDatabase.daoScoreQuiz().obtenerQScores().isEmpty()){
+
+                }else{
+                    scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
+                }
+
+                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                textTrembo.setText("TREMBOPUNTOS : "+scoreult);
+
+                int calo = 0;
+                int prote = 0;
+                int car = 0;
+
+                if(appDatabase.daoMacros().obtenerMacros().isEmpty()){
+
+                }else{
+                    calo = appDatabase.daoMacros().obtenerMacros().get(0).calorias;
+                    prote = appDatabase.daoMacros().obtenerMacros().get(0).proteinas;
+                    car = appDatabase.daoMacros().obtenerMacros().get(0).carbos;
+                }
+
+                textView24.setText(String.valueOf(calo));
+                textView25.setText(String.valueOf(prote));
+                textView26.setText(String.valueOf(car));
+            }
+        });
+
+        button4 = findViewById(R.id.button4);
+        button4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Navegador.this, GymQuiz.class);
+                startActivity(intent);
+
+                int scoreSquat = 0;
+                int scoreBench = 0;
+                int scoreQuiz = 0;
+                if(appDatabase.daoSquatScore().obtenerSScores().isEmpty()){
+
+                }else{
+                    scoreSquat = appDatabase.daoSquatScore().obtenerSScores().get(0).score;
+                }
+
+
+                if(appDatabase.daoBenchScore().obtenerBScores().isEmpty()){
+
+                }else{
+                    scoreBench = appDatabase.daoBenchScore().obtenerBScores().get(0).score;
+                }
+
+                if(appDatabase.daoScoreQuiz().obtenerQScores().isEmpty()){
+
+                }else{
+                    scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
+                }
+
+                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                textTrembo.setText("TREMBOPUNTOS : "+scoreult);
+                int calo = 0;
+                int prote = 0;
+                int car = 0;
+
+                if(appDatabase.daoMacros().obtenerMacros().isEmpty()){
+
+                }else{
+                    calo = appDatabase.daoMacros().obtenerMacros().get(0).calorias;
+                    prote = appDatabase.daoMacros().obtenerMacros().get(0).proteinas;
+                    car = appDatabase.daoMacros().obtenerMacros().get(0).carbos;
+                }
+
+                textView24.setText(String.valueOf(calo));
+                textView25.setText(String.valueOf(prote));
+                textView26.setText(String.valueOf(car));
+
+            }
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.navegador, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_navegador);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
+    }
+
+
+}
