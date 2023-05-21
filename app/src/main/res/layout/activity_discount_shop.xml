@@ -118,8 +118,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="100 Points"
-                        android:textSize="16sp"
                         android:textColor="#FFC107"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>

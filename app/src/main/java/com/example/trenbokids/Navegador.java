@@ -40,7 +40,7 @@ public class Navegador extends AppCompatActivity {
     TextView textView24;
     TextView textView25;
     TextView textView26;
-    int lithuanian_bussy = 0;
+
 
 
     @Override
@@ -55,6 +55,7 @@ public class Navegador extends AppCompatActivity {
         List<ScoreQuiz> scoreQuizList;
         List<Macro> macroList;
         List<ArnoldScore> joder_aratz_no_puede_costar_tanto_añadir_mas_puntos_mas_he_modificado_ya_89_clases_para_añadir_un_minijuego;
+        List<Comprado> brooooooooo;
 
         imagenReset = findViewById(R.id.imagenReset);
 
@@ -72,6 +73,7 @@ public class Navegador extends AppCompatActivity {
         benchScoreList = appDatabase.daoBenchScore().obtenerBScores();
         scoreQuizList = appDatabase.daoScoreQuiz().obtenerQScores();
         macroList = appDatabase.daoMacros().obtenerMacros();
+        brooooooooo = appDatabase.daoComprado().obtenerComprados();
         joder_aratz_no_puede_costar_tanto_añadir_mas_puntos_mas_he_modificado_ya_89_clases_para_añadir_un_minijuego = appDatabase.daoArnoldScore().obtenerAnosScores();
         int scoreSquat = 0;
 
@@ -80,6 +82,8 @@ public class Navegador extends AppCompatActivity {
         int calo = 0;
         int prote = 0;
         int car = 0;
+        int lithuanian_bussy=0;
+        int compra_resta = 0;
         if(squatScoreList.isEmpty()){
 
         }else{
@@ -104,8 +108,15 @@ public class Navegador extends AppCompatActivity {
         }else{
             scoreQuiz = scoreQuizList.get(0).score;
         }
+        if(brooooooooo.isEmpty()){
 
-        int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy;
+        }else{
+            for (int i = 0; i < brooooooooo.size() ; i++) {
+                compra_resta = compra_resta + brooooooooo.get(i).resta;
+
+            }
+        }
+        int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy - compra_resta;
         textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
         if(macroList.isEmpty()){
@@ -142,7 +153,8 @@ public class Navegador extends AppCompatActivity {
 
         imagenReset.setOnClickListener(v ->
         {
-
+            int lithuanian_bussy2=0;
+            int compra_resta2 = 0;
             int scoreSquat2 = 0;
             int scoreBench2 = 0;
             int scoreQuiz2 = 0;
@@ -168,10 +180,17 @@ public class Navegador extends AppCompatActivity {
             if(appDatabase.daoArnoldScore().obtenerAnosScores().isEmpty()){
 
             }else{
-                lithuanian_bussy = appDatabase.daoArnoldScore().obtenerAnosScores().get(0).score;
+                lithuanian_bussy2 = appDatabase.daoArnoldScore().obtenerAnosScores().get(0).score;
             }
+            if(appDatabase.daoComprado().obtenerComprados().isEmpty()){
 
-            int scoreult2 = scoreBench2+scoreSquat2+scoreQuiz2+lithuanian_bussy;
+            }else{
+                for (int i = 0; i < appDatabase.daoComprado().obtenerComprados().size() ; i++) {
+                    compra_resta2 = compra_resta2 + appDatabase.daoComprado().obtenerComprados().get(i).resta;
+
+                }
+            }
+            int scoreult2 = scoreBench2+scoreSquat2+scoreQuiz2+lithuanian_bussy2- compra_resta2;
             textTrembo.setText("TREMBOPUNTOS : "+scoreult2);
 
             int calo2 = 0;
@@ -210,7 +229,8 @@ public class Navegador extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-
+                int lithuanian_bussy=0;
+                int compra_resta = 0;
                 int scoreSquat = 0;
                 int scoreBench = 0;
                 int scoreQuiz = 0;
@@ -232,8 +252,15 @@ public class Navegador extends AppCompatActivity {
                 }else{
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
+                if(brooooooooo.isEmpty()){
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy; // TODO NO FUCKING WAY YOURE DOING IT TIHS WAY MY BROTHER IN JERUSALEM MADE A FINAL VARIABLE ABOVE ACCESIBLE FROM EVERY FUNCTIO NAND OVERWRITE IT
+                }else{
+                    for (int i = 0; i < brooooooooo.size() ; i++) {
+                        compra_resta = compra_resta + brooooooooo.get(i).resta;
+
+                    }
+                }
+                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy - compra_resta; // TODO NO FUCKING WAY YOURE DOING IT TIHS WAY MY BROTHER IN JERUSALEM MADE A FINAL VARIABLE ABOVE ACCESIBLE FROM EVERY FUNCTIO NAND OVERWRITE IT
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
                 int calo = 0;
@@ -264,7 +291,8 @@ public class Navegador extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Navegador.this, SquatGame.class);
                 startActivity(intent);
-
+                int lithuanian_bussy=0;
+                int compra_resta = 0;
                 int scoreSquat = 0;
                 int scoreBench = 0;
                 int scoreQuiz = 0;
@@ -286,8 +314,15 @@ public class Navegador extends AppCompatActivity {
                 }else{
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
+                if(brooooooooo.isEmpty()){
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy;
+                }else{
+                    for (int i = 0; i < brooooooooo.size() ; i++) {
+                        compra_resta = compra_resta + brooooooooo.get(i).resta;
+
+                    }
+                }
+                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy - compra_resta;
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
                 int calo = 0;
@@ -314,7 +349,8 @@ public class Navegador extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Navegador.this, Banca.class);
                 startActivity(intent);
-
+                int lithuanian_bussy=0;
+                int compra_resta = 0;
                 int scoreSquat = 0;
                 int scoreBench = 0;
                 int scoreQuiz = 0;
@@ -336,8 +372,15 @@ public class Navegador extends AppCompatActivity {
                 }else{
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
+                if(brooooooooo.isEmpty()){
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy;
+                }else{
+                    for (int i = 0; i < brooooooooo.size() ; i++) {
+                        compra_resta = compra_resta + brooooooooo.get(i).resta;
+
+                    }
+                }
+                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy - compra_resta;
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
                 int calo = 0;
@@ -364,7 +407,8 @@ public class Navegador extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Navegador.this, GymQuiz.class);
                 startActivity(intent);
-
+                int lithuanian_bussy=0;
+                int compra_resta = 0;
                 int scoreSquat = 0;
                 int scoreBench = 0;
                 int scoreQuiz = 0;
@@ -386,8 +430,15 @@ public class Navegador extends AppCompatActivity {
                 }else{
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
+                if(brooooooooo.isEmpty()){
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz +lithuanian_bussy; // 7 score result gaw dam????
+                }else{
+                    for (int i = 0; i < brooooooooo.size() ; i++) {
+                        compra_resta = compra_resta + brooooooooo.get(i).resta;
+
+                    }
+                }
+                int scoreult = scoreBench+scoreSquat+scoreQuiz +lithuanian_bussy - compra_resta; // 7 score result gaw dam CEO of hardcodding????
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
                 int calo = 0;
                 int prote = 0;

@@ -4,7 +4,7 @@ import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
 @Database(
-        entities = {Macro.class,BenchScore.class,SquatScore.class,PalabrasFit.class,PalabraDelDia.class,IntentosCompletado.class,ScoreQuiz.class, ArnoldScore.class},
+        entities = {Macro.class,BenchScore.class,SquatScore.class,PalabrasFit.class,PalabraDelDia.class,IntentosCompletado.class,ScoreQuiz.class, ArnoldScore.class, Comprado.class},
         version = 1
 )
 
@@ -17,5 +17,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract DaoIntentosCompletado daoIntentosCompletado();
     public abstract DaoScoreQuiz daoScoreQuiz();
     public abstract DaoArnoldScore daoArnoldScore();
+    public abstract DaoComprado daoComprado();
 
 }

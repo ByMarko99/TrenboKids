@@ -125,6 +125,8 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != //Comprueba solo si tiene write, no hace falta mas, y lo pide sino junto al read
                 PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 0);
+            buildAlertMessageRestart();
+
         }
 
 
@@ -188,12 +190,12 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
                             CameraPosition cameraPosition = new CameraPosition.Builder().
                                     target(here).
                                     tilt(60).
-                                    zoom(19).
+                                    zoom(15).
                                     bearing(0).
                                     build();
 
                             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                            marker1 =  map.addMarker(new MarkerOptions().position(here).title("Hemen zaude").icon(BitmapDescriptorFactory.fromResource(R.raw.arnie)));
+                            marker1 =  map.addMarker(new MarkerOptions().position(here).title("Hemen zaude").icon(BitmapDescriptorFactory.fromResource(R.raw.neo)));
                             //  map.moveCamera(CameraUpdateFactory.newLatLngZoom(here, zoomLevel));
                   // Crea un looper en el que pide la la localizacion y luego ejecuta lo de arriba para poner el marker
                             // AAAAA reaches here after returning null? gets location enters locationcallback forever???
@@ -305,6 +307,21 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Zure GPS-a desaktibatuta dago, aktibatu NOW")
+                .setCancelable(false);
+
+
+        ((Activity)this).runOnUiThread(new Runnable() { // Hilo no puede sacar popups por eso se le pone que ejecute el hilo en el principal grafico
+            public void run() {
+                final AlertDialog alert = builder.create();
+                alert.show();            }
+        });
+
+
+    }
+
+    private void buildAlertMessageRestart() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Reinicia la aplicación por favor")
                 .setCancelable(false);
 
 
