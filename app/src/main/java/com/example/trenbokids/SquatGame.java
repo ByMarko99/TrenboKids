@@ -27,7 +27,7 @@ public class SquatGame extends AppCompatActivity {
     Boolean check2 = true;
     View.OnClickListener initialClickListener;
     Animation animShake;
-    int i,rep_count;
+    int i, rep_count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +47,15 @@ public class SquatGame extends AppCompatActivity {
 
         squatScoreList = appDatabase.daoSquatScore().obtenerSScores();
 
-        if(squatScoreList.isEmpty()){
+        if (squatScoreList.isEmpty()) {
             reps_text.setText("Reps: 0");
-            SquatScore b = new SquatScore(0,0);
+            SquatScore b = new SquatScore(0, 0);
             appDatabase.daoSquatScore().InsertarSScores(b);
-        }else {
+        } else {
             int score;
             score = squatScoreList.get(0).score;
 
-            reps_text.setText("Reps: "+Integer.toString(score));
+            reps_text.setText("Reps: " + Integer.toString(score));
         }
 
         Random r = new Random();
@@ -65,7 +65,7 @@ public class SquatGame extends AppCompatActivity {
         squatimage = findViewById(R.id.upsquat);
         animShake = AnimationUtils.loadAnimation(this, R.anim.shake); // ESTA ES LA ANIMACION DE SHAKE
 
-    initialClickListener = new View.OnClickListener() {
+        initialClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int result = r.nextInt(high - low) + low;
@@ -100,15 +100,14 @@ public class SquatGame extends AppCompatActivity {
                     int score;
                     score = appDatabase.daoSquatScore().obtenerSScores().get(0).score;
                     int suma;
-                    suma = score+1;
-                    appDatabase.daoSquatScore().updateSScore(0,suma);
+                    suma = score + 1;
+                    appDatabase.daoSquatScore().updateSScore(0, suma);
                     reps_text.setText("Reps: " + String.valueOf(suma));
                 }
             }
         };
 
         squatimage.setOnClickListener(initialClickListener);
-
 
 
     }
@@ -125,16 +124,40 @@ public class SquatGame extends AppCompatActivity {
                 harder_text.setTextColor(getResources().getColor(R.color.red));
                 Random t = new Random();
                 int orgasm = t.nextInt(5 - 1) + 1;
-                if(orgasm == 4){
-                    if(mediaPlayer != null){
-                        mediaPlayer.stop();
-                        harder_text.setText("ARRIBA!");
+                if (orgasm == 3) {
+                    if (mediaPlayer != null) {
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+                        {
+                            @Override
+                            public void onCompletion(MediaPlayer mp)
+                            {
+                                mediaPlayer = MediaPlayer.create(SquatGame.this, R.raw.puffi);
+                                mediaPlayer.start();
+                            }
+                        });
+                    } else {
+                        mediaPlayer = MediaPlayer.create(SquatGame.this, R.raw.puffi);
+                        mediaPlayer.start();
+                    }
+                    harder_text.setText("ARRIBA!");
 
 
-                    mediaPlayer = MediaPlayer.create(SquatGame.this, R.raw.puffi);
-                    mediaPlayer.start();
-                }
-                }else if (orgasm == 3){
+                } else if (orgasm == 2) {
+                    if (mediaPlayer != null) {
+
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener()
+                        {
+                            @Override
+                            public void onCompletion(MediaPlayer mp)
+                            {
+                                mediaPlayer = MediaPlayer.create(SquatGame.this, R.raw.puffi);
+                                mediaPlayer.start();
+                            }
+                        });
+
+                    }else{
+                        mediaPlayer = MediaPlayer.create(SquatGame.this, R.raw.puffi);
+                        mediaPlayer.start();                    }
                     harder_text.setText("HARDER!!!!!");
                 }
                 if (i == result) {

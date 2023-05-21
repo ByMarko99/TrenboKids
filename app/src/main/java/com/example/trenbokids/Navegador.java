@@ -40,7 +40,7 @@ public class Navegador extends AppCompatActivity {
     TextView textView24;
     TextView textView25;
     TextView textView26;
-
+    int lithuanian_bussy = 0;
 
 
     @Override
@@ -54,6 +54,8 @@ public class Navegador extends AppCompatActivity {
         List<BenchScore> benchScoreList;
         List<ScoreQuiz> scoreQuizList;
         List<Macro> macroList;
+        List<ArnoldScore> joder_aratz_no_puede_costar_tanto_añadir_mas_puntos_mas_he_modificado_ya_89_clases_para_añadir_un_minijuego;
+
         imagenReset = findViewById(R.id.imagenReset);
 
         AppDatabase appDatabase = Room.databaseBuilder(
@@ -70,8 +72,9 @@ public class Navegador extends AppCompatActivity {
         benchScoreList = appDatabase.daoBenchScore().obtenerBScores();
         scoreQuizList = appDatabase.daoScoreQuiz().obtenerQScores();
         macroList = appDatabase.daoMacros().obtenerMacros();
-
+        joder_aratz_no_puede_costar_tanto_añadir_mas_puntos_mas_he_modificado_ya_89_clases_para_añadir_un_minijuego = appDatabase.daoArnoldScore().obtenerAnosScores();
         int scoreSquat = 0;
+
         int scoreBench = 0;
         int scoreQuiz = 0;
         int calo = 0;
@@ -81,6 +84,12 @@ public class Navegador extends AppCompatActivity {
 
         }else{
             scoreSquat = squatScoreList.get(0).score;
+        }
+
+        if(joder_aratz_no_puede_costar_tanto_añadir_mas_puntos_mas_he_modificado_ya_89_clases_para_añadir_un_minijuego.isEmpty()){
+
+        }else{
+            lithuanian_bussy = joder_aratz_no_puede_costar_tanto_añadir_mas_puntos_mas_he_modificado_ya_89_clases_para_añadir_un_minijuego.get(0).score;
         }
 
 
@@ -96,7 +105,7 @@ public class Navegador extends AppCompatActivity {
             scoreQuiz = scoreQuizList.get(0).score;
         }
 
-        int scoreult = scoreBench+scoreSquat+scoreQuiz;
+        int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy;
         textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
         if(macroList.isEmpty()){
@@ -156,14 +165,20 @@ public class Navegador extends AppCompatActivity {
                 scoreQuiz2 = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
             }
 
-            int scoreult2 = scoreBench2+scoreSquat2+scoreQuiz2;
+            if(appDatabase.daoArnoldScore().obtenerAnosScores().isEmpty()){
+
+            }else{
+                lithuanian_bussy = appDatabase.daoArnoldScore().obtenerAnosScores().get(0).score;
+            }
+
+            int scoreult2 = scoreBench2+scoreSquat2+scoreQuiz2+lithuanian_bussy;
             textTrembo.setText("TREMBOPUNTOS : "+scoreult2);
 
             int calo2 = 0;
             int prote2 = 0;
             int car2 = 0;
 
-            if(appDatabase.daoMacros().obtenerMacros().isEmpty()){
+            if(appDatabase.daoMacros().obtenerMacros().isEmpty()){ //
 
             }else{
                 calo2 = appDatabase.daoMacros().obtenerMacros().get(0).calorias;
@@ -191,7 +206,7 @@ public class Navegador extends AppCompatActivity {
                     Intent intent = new Intent(Navegador.this, Mapa.class);
                     startActivity(intent);
                 }else if (id==R.id.nav_slideshow){
-                    Intent intent = new Intent(Navegador.this, SquatGame.class);
+                    Intent intent = new Intent(Navegador.this, discount_shop.class);
                     startActivity(intent);
 
                 }
@@ -218,7 +233,7 @@ public class Navegador extends AppCompatActivity {
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy; // TODO NO FUCKING WAY YOURE DOING IT TIHS WAY MY BROTHER IN JERUSALEM MADE A FINAL VARIABLE ABOVE ACCESIBLE FROM EVERY FUNCTIO NAND OVERWRITE IT
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
                 int calo = 0;
@@ -272,7 +287,7 @@ public class Navegador extends AppCompatActivity {
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy;
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
                 int calo = 0;
@@ -322,7 +337,7 @@ public class Navegador extends AppCompatActivity {
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                int scoreult = scoreBench+scoreSquat+scoreQuiz + lithuanian_bussy;
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
 
                 int calo = 0;
@@ -372,7 +387,7 @@ public class Navegador extends AppCompatActivity {
                     scoreQuiz = appDatabase.daoScoreQuiz().obtenerQScores().get(0).score;
                 }
 
-                int scoreult = scoreBench+scoreSquat+scoreQuiz;
+                int scoreult = scoreBench+scoreSquat+scoreQuiz +lithuanian_bussy; // 7 score result gaw dam????
                 textTrembo.setText("TREMBOPUNTOS : "+scoreult);
                 int calo = 0;
                 int prote = 0;

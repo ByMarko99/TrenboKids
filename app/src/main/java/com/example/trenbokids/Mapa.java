@@ -36,6 +36,7 @@ import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.room.Room;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -87,6 +88,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
     private static final String KEY_LOCATION = "location";
     private FusedLocationProviderClient fusedLocationClient;
     LatLng here;
+    int punticos;
     private int screenWidth;
     private int[] glowColors = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.MAGENTA};
 
@@ -99,6 +101,20 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
         arnieMonke = findViewById(R.id.imageMonkey);
         textScore = findViewById(R.id.textScore);
         textScore.setVisibility(View.GONE);
+        List<ArnoldScore> arnie_score;
+
+        AppDatabase appDatabase = Room.databaseBuilder(
+                getApplicationContext(),
+                AppDatabase.class,
+                "dbPruebas"
+        ).allowMainThreadQueries().fallbackToDestructiveMigration().build();
+
+        arnie_score = appDatabase.daoArnoldScore().obtenerAnosScores();
+
+        if (arnie_score.isEmpty()) {
+            ArnoldScore b = new ArnoldScore(0, 0);
+            appDatabase.daoArnoldScore().InsertarAnosScores(b);
+        }
 
         if (savedInstanceState != null) {
             lastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
@@ -132,6 +148,9 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
                 score++;
                 textScore.setText("+" + score);
                 textScore.setVisibility(View.VISIBLE);
+
+                    appDatabase.daoArnoldScore().updateScore(0, score + arnie_score.get(0).score);
+
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {

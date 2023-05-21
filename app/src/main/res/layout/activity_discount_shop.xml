@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".discount_shop"
+    android:background="@drawable/gradient_background"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+                <!-- Shop Title -->
+                <TextView
+                    android:id="@+id/text_shop_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TremboTienda"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/punticos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="TremboPuntos:"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <!-- Shop Title -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0.5"
+                    android:orientation="horizontal">
+
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/gnomesarerealfuckoff"
+                        android:layout_width="0dp"
+                        android:layout_height="28dp"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/furro"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/trenbopuntos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="0"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <!-- Item 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <!-- Item Icon -->
+                <ImageView
+                    android:id="@+id/image_item_1"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/tren200mg"
+                    android:scaleType="centerCrop" />
+
+                <!-- Item Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <!-- Item Name -->
+                    <TextView
+                        android:id="@+id/text_item_1_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tren 200mg"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Item Description -->
+                    <TextView
+                        android:id="@+id/text_item_1_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The forbidden juice"
+                        android:textSize="14sp" />
+
+                    <!-- Item Price -->
+                    <TextView
+                        android:id="@+id/text_item_1_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="100 Points"
+                        android:textSize="16sp"
+                        android:textColor="#FFC107"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Buy Button -->
+                <Button
+                    android:id="@+id/button_item_1_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buy"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp">
+
+                <!-- Item Icon -->
+                <ImageView
+                    android:id="@+id/image_item_2"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/test"
+                    android:scaleType="centerCrop" />
+
+                <!-- Item Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <!-- Item Name -->
+                    <TextView
+                        android:id="@+id/text_item_2_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Test"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Item Description -->
+                    <TextView
+                        android:id="@+id/text_item_2_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Freshly milked Lithuanin testosterone"
+                        android:textSize="14sp" />
+
+                    <!-- Item Price -->
+                    <TextView
+                        android:id="@+id/text_item_2_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="69 Points"
+                        android:textSize="16sp"
+                        android:textColor="#FFC107"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Buy Button -->
+                <Button
+                    android:id="@+id/button_item_2_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buy"
+                    android:layout_gravity="center_vertical" />
+
+            </LinearLayout> <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <!-- Item Icon -->
+            <ImageView
+                android:id="@+id/image_item_3"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/winstrol"
+                android:scaleType="centerCrop" />
+
+            <!-- Item Details -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <!-- Item Name -->
+                <TextView
+                    android:id="@+id/text_item_3_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Winstrol"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Item Description -->
+                <TextView
+                    android:id="@+id/text_item_3_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Win or die"
+                    android:textSize="14sp" />
+
+                <!-- Item Price -->
+                <TextView
+                    android:id="@+id/text_item_3_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="140 Points"
+                    android:textSize="16sp"
+                    android:textColor="#FFC107"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Buy Button -->
+            <Button
+                android:id="@+id/button_item_3_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout> <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <!-- Item Icon -->
+            <ImageView
+                android:id="@+id/image_item_4"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/sarms"
+                android:scaleType="centerCrop" />
+
+            <!-- Item Details -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <!-- Item Name -->
+                <TextView
+                    android:id="@+id/text_item_4_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sarms"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Item Description -->
+                <TextView
+                    android:id="@+id/text_item_4_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sarms goblin, you're average TikTok influencer"
+                    android:textSize="14sp" />
+
+                <!-- Item Price -->
+                <TextView
+                    android:id="@+id/text_item_4_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="45 Points"
+                    android:textSize="16sp"
+                    android:textColor="#FFC107"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Buy Button -->
+            <Button
+                android:id="@+id/button_item_4_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout> <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <!-- Item Icon -->
+            <ImageView
+                android:id="@+id/image_item_5"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/deca"
+                android:scaleType="centerCrop" />
+
+            <!-- Item Details -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <!-- Item Name -->
+                <TextView
+                    android:id="@+id/text_item_5_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deca"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Item Description -->
+                <TextView
+                    android:id="@+id/text_item_5_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Legalize anabolic steroids"
+                    android:textSize="14sp" />
+
+                <!-- Item Price -->
+                <TextView
+                    android:id="@+id/text_item_5_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="220 Points"
+                    android:textSize="16sp"
+                    android:textColor="#FFC107"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Buy Button -->
+            <Button
+                android:id="@+id/button_item_5_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <!-- Item Icon -->
+            <ImageView
+                android:id="@+id/image_item_6"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/creatin"
+                android:scaleType="centerCrop" />
+
+            <!-- Item Details -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <!-- Item Name -->
+                <TextView
+                    android:id="@+id/text_item_6_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Creatine"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <!-- Item Description -->
+                <TextView
+                    android:id="@+id/text_item_6_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Drink water"
+                    android:textSize="14sp" />
+
+                <!-- Item Price -->
+                <TextView
+                    android:id="@+id/text_item_6_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15 Points"
+                    android:textSize="16sp"
+                    android:textColor="#FFC107"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Buy Button -->
+            <Button
+                android:id="@+id/button_item_6_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buy"
+                android:layout_gravity="center_vertical" />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- Item Icon -->
+                <ImageView
+                    android:id="@+id/image_item_7"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ash" />
+
+                <!-- Item Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Item Name -->
+                    <TextView
+                        android:id="@+id/text_item_7_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ashwagandha (Sigma Juice)"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Item Description -->
+                    <TextView
+                        android:id="@+id/text_item_7_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CEO of stoic juices"
+                        android:textSize="14sp" />
+
+                    <!-- Item Price -->
+                    <TextView
+                        android:id="@+id/text_item_7_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50 Points"
+                        android:textColor="#FFC107"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Buy Button -->
+                <Button
+                    android:id="@+id/button_item_7_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Buy" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- Item Icon -->
+                <ImageView
+                    android:id="@+id/image_item_8"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ya4luigi" />
+
+                <!-- Item Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Item Name -->
+                    <TextView
+                        android:id="@+id/text_item_8_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estrogen"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Item Description -->
+                    <TextView
+                        android:id="@+id/text_item_8_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="If you want to be a femboy buy this"
+                        android:textSize="14sp" />
+
+                    <!-- Item Price -->
+                    <TextView
+                        android:id="@+id/text_item_8_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 Points"
+                        android:textColor="#FFC107"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Buy Button -->
+                <Button
+                    android:id="@+id/button_item_8_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Buy" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- Item Icon -->
+                <ImageView
+                    android:id="@+id/image_item_9"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/dianabol" />
+
+                <!-- Item Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Item Name -->
+                    <TextView
+                        android:id="@+id/text_item_9_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dianabol"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Item Description -->
+                    <TextView
+                        android:id="@+id/text_item_9_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The Devil's favorite anabolic"
+                        android:textSize="14sp" />
+
+                    <!-- Item Price -->
+                    <TextView
+                        android:id="@+id/text_item_9_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="340 Points"
+                        android:textColor="#FFC107"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Buy Button -->
+                <Button
+                    android:id="@+id/button_item_9_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Buy" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- Item Icon -->
+                <ImageView
+                    android:id="@+id/image_item_10"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/jojo" />
+
+                <!-- Item Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Item Name -->
+                    <TextView
+                        android:id="@+id/text_item_10_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="The JOJO Juice"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Item Description -->
+                    <TextView
+                        android:id="@+id/text_item_10_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="This juice is said to give you gay powers, use at your own risk"
+                        android:textSize="14sp" />
+
+                    <!-- Item Price -->
+                    <TextView
+                        android:id="@+id/text_item_10_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="999 Points"
+                        android:textColor="#FFC107"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- Buy Button -->
+                <Button
+                    android:id="@+id/button_item_10_buy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="Buy" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
