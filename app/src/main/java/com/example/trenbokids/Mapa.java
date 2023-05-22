@@ -199,9 +199,8 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
 
                             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                             marker1 =  map.addMarker(new MarkerOptions().position(here).title("Hemen zaude").icon(BitmapDescriptorFactory.fromResource(R.raw.neo)));
-                            //  map.moveCamera(CameraUpdateFactory.newLatLngZoom(here, zoomLevel));
-                  // Crea un looper en el que pide la la localizacion y luego ejecuta lo de arriba para poner el marker
-                            // AAAAA reaches here after returning null? gets location enters locationcallback forever???
+                            addRandomMarkers();
+
                         }
 
                     }
@@ -306,7 +305,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
 
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Zure GPS-a desaktibatuta dago, aktibatu NOW")
+        builder.setMessage("Zure GPS-a desaktibatuta dago, aktibatu GPS, itxi eta ireki aplikazioa berriro")
                 .setCancelable(false);
 
 
@@ -372,7 +371,24 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
             Log.e(TAG, "Can't find style. Error: ", e);
         }
 
+    }
+    private void addRandomMarkers() {
+        // Generate random markers
+        Random random = new Random();
+        double maxDistanceInMeters = 5000;
 
+        if (here != null) {
+            for (int i = 0; i < 10; i++) {
+                // Generate random latitude and longitude offsets within 100 meters
+                double latOffset = (random.nextDouble() - 0.5) * maxDistanceInMeters / 111111.0;
+                double lngOffset = (random.nextDouble() - 0.5) * maxDistanceInMeters / (111111.0 * Math.cos(Math.toRadians(here.latitude)));
+
+                // Create marker coordinates with offsets
+                LatLng markerPosition = new LatLng(here.latitude + latOffset, here.longitude + lngOffset);
+
+                // Add the marker to the map
+                map.addMarker(new MarkerOptions().position(markerPosition).title("Gym").icon(BitmapDescriptorFactory.fromResource(R.raw.gym)));            }
+        }
     }
 
     public void onMapReady2 (final  GoogleMap map) {
