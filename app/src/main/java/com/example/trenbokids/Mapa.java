@@ -18,6 +18,7 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -101,6 +102,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
         arnieMonke = findViewById(R.id.imageMonkey);
         textScore = findViewById(R.id.textScore);
         textScore.setVisibility(View.GONE);
+
         List<ArnoldScore> arnie_score;
 
         AppDatabase appDatabase = Room.databaseBuilder(
@@ -185,6 +187,7 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
                             // I forgor que hace💀💀
                             buildAlertMessageNoGps();
                         }else {
+
                             here = new LatLng(location.getLatitude(), location.getLongitude());
                             // float zoomLevel = 16.5f;
                             CameraPosition cameraPosition = new CameraPosition.Builder().
@@ -204,16 +207,13 @@ public class Mapa extends AppCompatActivity implements OnMapReadyCallback, Googl
                     }
                 });
 
-
-
-
-
-            Handler handler = new Handler();
+                Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                    progressDialog.dismiss();
-
+                    MediaPlayer mediaPlayer = MediaPlayer.create(Mapa.this, R.raw.samurai);
+                    mediaPlayer.start();
                 }
             }, 4000);
         }
