@@ -34,7 +34,7 @@ public class Navegador extends AppCompatActivity {
     private ActivityNavegadorBinding binding;
     Button button;
     Button button2;
-    Button button4;
+    Button button4, button3;
     TextView textTrembo;
     ImageView imagenReset;
     TextView textView24;
@@ -400,6 +400,16 @@ public class Navegador extends AppCompatActivity {
                 textView26.setText(String.valueOf(car));
             }
         });
+        button3 = findViewById(R.id.button3);
+        button3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Navegador.this, gnome_deadlift.class);
+                startActivity(intent);
+
+            }
+        });
+
 
         button4 = findViewById(R.id.button4);
         button4.setOnClickListener(new View.OnClickListener(){
